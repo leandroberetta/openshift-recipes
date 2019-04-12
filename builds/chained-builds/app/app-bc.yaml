@@ -19,7 +19,7 @@ spec:
         kind: ImageStreamTag
         name: compile-artifact:latest
       paths: 
-      - sourcePath: ./app/target/openshift-hello-world-thorntail.jar
+      - sourcePath: /app/target/openshift-hello-world-thorntail.jar
         destinationDir: "."
   strategy:
     dockerStrategy:
