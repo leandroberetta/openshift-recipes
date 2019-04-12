@@ -10,10 +10,17 @@ spec:
       kind: ImageStreamTag
       name: app:latest
   source:
-    contextDir: builds/chained-builds
+    contextDir: builds/chained-builds/app
     git:
       uri: https://github.com/leandroberetta/openshift-recipes.git
     type: Git
+    images:
+    - from: 
+        kind: ImageStreamTag
+        name: compile-artifact:latest
+      paths: 
+      - sourcePath: ./app/target/openshift-hello-world-thorntail.jar
+        destinationDir: "."
   strategy:
     dockerStrategy:
       from:

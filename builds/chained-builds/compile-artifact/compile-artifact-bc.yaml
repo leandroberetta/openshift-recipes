@@ -10,7 +10,7 @@ spec:
       kind: ImageStreamTag
       name: compile-artifact:latest
   source:
-    contextDir: builds/chained-builds
+    contextDir: builds/chained-builds/compile-artifact
     git:
       uri: https://github.com/leandroberetta/openshift-recipes.git
     type: Git
