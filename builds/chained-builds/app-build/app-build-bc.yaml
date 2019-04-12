@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: app-build
+  name: app-build
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: app-build:latest
+  source:
+    contextDir: builds/chained-builds/app-build
+    git:
+      uri: https://github.com/leandroberetta/openshift-recipes.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: maven:latest
+    type: Docker

@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: app-runtime
+  name: app-runtime
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'app-runtime:latest'
+  source:
+    dockerfile:
+      FROM java:openjdk-8-alpine
+
+      COPY openshift-hello-world-thorntail.jar ./app.jar
+
+      CMD ["/usr/bin/java", "-jar", "app.jar", "-Djava.net.preferIPv4Stack=true", "-Djava.net.preferIPv4Addresses=true"]
+    images:
+      - as: null
+        from:
+          kind: ImageStreamTag
+          name: 'app-build:latest'
+        paths:
+          - destinationDir: .
+            sourcePath: /app/target/openshift-hello-world-thorntail.jar
+    type: Dockerfile
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'java:openjdk-8-alpine'
+    type: Docker
