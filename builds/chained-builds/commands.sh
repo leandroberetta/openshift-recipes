@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+# Documentation: https://docs.openshift.com/container-platform/3.11/dev_guide/builds/advanced_build_operations.html#dev-guide-chaining-builds
+
 # Create the BuildConfig (and ImageStream) that compiles the artifacts, a build is automatically started
 oc new-build https://github.com/leandroberetta/openshift-recipes.git --context-dir=builds/chained-builds/app-build --name=app-build --strategy=docker -n builds
 
