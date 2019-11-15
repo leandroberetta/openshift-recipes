@@ -4,7 +4,8 @@ Set of examples and recipes to demonstrate OpenShift features.
 
 ## Builds
 
-* [Chained builds](./builds/chained-builds)
-* [Multi-stage builds](./builds/multi-stage-builds)
+* [Docker](./builds/docker)
+* [Chained](./builds/chained)
+* [Multi-stage](./builds/multi-stage)
 * [Nexus Mirror](./builds/nexus-mirror)
-* [Binary builds](./builds/binary-builds)
+* [Binary](./builds/binary)
